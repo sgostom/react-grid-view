@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { IPagination } from '../models/pagination.model';
 
 export const usePagination = <T>(
@@ -6,6 +6,8 @@ export const usePagination = <T>(
   pageLimit: number
 ): IPagination<T> => {
   const [offset, setOffset] = useState(0);
+  useEffect(() => setOffset(0), [dataSource]);
+
   const numberOfItems = dataSource.length;
 
   const paginatedItems = dataSource.slice(offset, offset + pageLimit);
@@ -15,7 +17,6 @@ export const usePagination = <T>(
 
   const canGoPrev = offset - pageLimit >= 0;
   const goPrev = () => setOffset(offset - pageLimit);
-  console.log(canGoNext, canGoPrev);
 
   return {
     paginatedItems,

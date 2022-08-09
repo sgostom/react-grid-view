@@ -1,18 +1,23 @@
-import { useState } from 'react';
-import { DECODED_DATA } from '../consts/data.const';
 import { GridPaginationContext } from '../context/grid-pagination.context';
+import { GridSearchContext } from '../context/grid-serach-context.hook';
+import { useGridItems } from '../hooks/use-grid-items.hook';
 import { usePagination } from '../hooks/use-pagination.hook';
-import Grid from './Grid';
+import GridHeader from './GridHeader';
+import GridItems from './GridItems';
 
 const GridView = () => {
-  const [items] = useState(DECODED_DATA);
-
-  const pagination = usePagination(items, 5);
+  const { filteredItems, searchPhrase, setSearchPhrase } = useGridItems();
+  const pagination = usePagination(filteredItems, 5);
 
   return (
-    <GridPaginationContext.Provider value={pagination}>
-      <Grid></Grid>
-    </GridPaginationContext.Provider>
+    <div className="mx-auto max-w-[1360px] px-2">
+      <GridSearchContext.Provider value={{ searchPhrase, setSearchPhrase }}>
+        <GridPaginationContext.Provider value={pagination}>
+          <GridHeader></GridHeader>
+          <GridItems></GridItems>
+        </GridPaginationContext.Provider>
+      </GridSearchContext.Provider>
+    </div>
   );
 };
 
