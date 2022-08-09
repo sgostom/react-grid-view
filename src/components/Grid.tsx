@@ -1,15 +1,21 @@
-import { useState } from 'react';
-import { DECODED_DATA } from '../consts/data.const';
+import { useContext } from 'react';
+import { GridPaginationContext } from '../context/grid-pagination.context';
+import GridHeader from './GridHeader';
 import GridItem from './GridItem';
 
 const Grid = () => {
-  const [items] = useState(DECODED_DATA);
+  const { paginatedItems } = useContext(GridPaginationContext);
+
+  if (!paginatedItems) return null;
 
   return (
-    <div className="flex">
-      {items.map((item) => (
-        <GridItem gridItem={item}></GridItem>
-      ))}
+    <div className="flex flex-col items-center">
+      <GridHeader></GridHeader>
+      <div className="flex flex-wrap">
+        {paginatedItems.map((item, i) => (
+          <GridItem key={item.id} gridItem={item}></GridItem>
+        ))}
+      </div>
     </div>
   );
 };

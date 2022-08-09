@@ -1,9 +1,9 @@
-import Grid from './components/Grid';
+import GridView from './components/GridView';
 
 const App = () => {
   return (
     <div>
-      <Grid></Grid>
+      <GridView></GridView>
     </div>
   );
 };

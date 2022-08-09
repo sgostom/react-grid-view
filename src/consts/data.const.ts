@@ -1,6 +1,7 @@
+import { IGridItem } from '../models/grid-item.model';
 import { getDecodedtext } from '../utils/get-decoded-text.util';
 
-const DATA = [
+const DATA: Omit<IGridItem, 'id'>[] = [
   {
     title: 'Level up',
     description: 'Level up',
@@ -123,7 +124,8 @@ const DATA = [
   },
 ];
 
-export const DECODED_DATA = DATA.map((e) => ({
+export const DECODED_DATA: IGridItem[] = DATA.map((e, i) => ({
+  id: 'git-item-' + i,
   title: getDecodedtext(e.title),
   description: getDecodedtext(e.description),
   imagePath: e.imagePath,
