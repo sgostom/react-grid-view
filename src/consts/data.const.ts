@@ -128,5 +128,5 @@ export const DECODED_DATA: IGridItem[] = DATA.map((e, i) => ({
   id: 'git-item-' + i,
   title: getDecodedtext(e.title),
   description: getDecodedtext(e.description),
-  imagePath: e.imagePath,
+  imagePath: getDecodedtext(e.imagePath),
 }));
