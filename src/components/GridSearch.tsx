@@ -1,12 +1,16 @@
-import { ChangeEvent, useContext } from 'react';
+import { ChangeEvent, useContext, useState } from 'react';
 import { GridSearchContext } from '../context/grid-serach-context.hook';
 
 const GridSearch = () => {
-  const { searchPhrase, setSearchPhrase } = useContext(GridSearchContext);
+  const { applySearch } = useContext(GridSearchContext);
+
+  const [searchPhrase, setSearchPhrase] = useState('');
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
-    setSearchPhrase(e.target.value);
+    const value = e.target.value;
+    setSearchPhrase(value);
+    applySearch(value);
   };
 
   return (

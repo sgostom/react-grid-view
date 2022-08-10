@@ -6,12 +6,12 @@ import GridHeader from './GridHeader';
 import GridItems from './GridItems';
 
 const GridView = () => {
-  const { filteredItems, searchPhrase, setSearchPhrase } = useGridItems();
+  const { filteredItems, applySearch } = useGridItems();
   const pagination = usePagination(filteredItems, 5);
 
   return (
     <div className="mx-auto max-w-[1360px]">
-      <GridSearchContext.Provider value={{ searchPhrase, setSearchPhrase }}>
+      <GridSearchContext.Provider value={{ applySearch }}>
         <GridPaginationContext.Provider value={pagination}>
           <GridHeader></GridHeader>
           <GridItems></GridItems>

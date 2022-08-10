@@ -1,5 +1,6 @@
-import { useMemo, useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 import { DECODED_DATA } from '../consts/data.const';
+import { debounce } from '../utils/debounce.util';
 
 export const useGridItems = () => {
   const [searchPhrase, setSearchPhrase] = useState('');
@@ -13,5 +14,9 @@ export const useGridItems = () => {
     [searchPhrase]
   );
 
-  return { filteredItems, searchPhrase, setSearchPhrase };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const applySearch = useCallback(debounce(setSearchPhrase), []);
+
+
+  return { filteredItems, applySearch };
 };
