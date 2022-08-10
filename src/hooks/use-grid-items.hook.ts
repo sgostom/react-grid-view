@@ -17,6 +17,5 @@ export const useGridItems = () => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const applySearch = useCallback(debounce(setSearchPhrase), []);
 
-
   return { filteredItems, applySearch };
 };
