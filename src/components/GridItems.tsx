@@ -8,11 +8,11 @@ const GridItems = () => {
   if (numberOfItems === 0) return <>No results found...</>;
 
   return (
-    <div className="-mx-2 flex flex-wrap justify-center">
+    <section className="-mx-2 flex flex-wrap justify-center">
       {paginatedItems.map((item) => (
         <GridItem key={item.id} gridItem={item}></GridItem>
       ))}
-    </div>
+    </section>
   );
 };
 

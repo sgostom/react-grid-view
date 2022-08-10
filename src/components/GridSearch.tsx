@@ -17,7 +17,8 @@ const GridSearch = () => {
       <input
         type="text"
         id="search-input"
-        className="block w-full rounded-lg border p-1 outline-none"
+        aria-label="Search"
+        className="block w-full rounded-lg border border-gray-300 p-1"
         value={searchPhrase}
         onChange={handleChange}
       ></input>

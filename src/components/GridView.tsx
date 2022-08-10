@@ -10,7 +10,7 @@ const GridView = () => {
   const pagination = usePagination(filteredItems, 5);
 
   return (
-    <div className="mx-auto max-w-[1360px] px-2">
+    <div className="mx-auto max-w-[1360px]">
       <GridSearchContext.Provider value={{ searchPhrase, setSearchPhrase }}>
         <GridPaginationContext.Provider value={pagination}>
           <GridHeader></GridHeader>
