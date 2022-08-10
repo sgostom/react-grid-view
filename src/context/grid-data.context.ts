@@ -5,4 +5,4 @@ export interface IGridData {
   items: IGridItem[];
 }
 
-export const gridDataContext = createContext({} as IGridData);
+export const gridDataContext = createContext<IGridData>({ items: [] });
